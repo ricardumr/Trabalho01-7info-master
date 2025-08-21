@@ -1,4 +1,5 @@
 import { StatusBar } from "expo-status-bar";
+
 import {
   StyleSheet,
   Text,
@@ -7,7 +8,10 @@ import {
   TouchableOpacity,
   FlatList,
   Image,
+  ScrollView,
+  TextInput,
 } from "react-native";
+
 import Modal from "react-native-modal";
 import { useState } from "react";
 
@@ -46,7 +50,7 @@ export default function App() {
     },
   ];
 
-  /*  const criaItem = ({ item }) => (
+  const criaItem = ({ item }) => (
     <View style={styles.listaItem}>
       <Image source={item.imagem} style={styles.listaImagem} />
 
@@ -55,7 +59,7 @@ export default function App() {
         <Text>Sobre: {item.sobre} </Text>
       </View>
     </View>
-  );*/
+  );
 
   const [visivel1, setVisivel1] = useState(false);
 
@@ -81,59 +85,161 @@ export default function App() {
     setVisivel4(!visivel4);
   };
 
+    const [visivel5, setVisivel5] = useState(false);
+
+  const trocar5 = () => {
+    setVisivel5(!visivel5);
+  };
+
   return (
-    <View style={styles.container}>
-      <Text>Reservas aéreas</Text>
+    <ScrollView style={styles.container}>
+      <View style={styles.boxMain}>
+         <TouchableOpacity style={styles.cadastro} onPress={trocar5}>
+                  <Text style={styles.texto}>Cadastro</Text>
+                </TouchableOpacity>
+        <Text style={styles.titulo}>Reservas aereas</Text>
 
-      <View style={styles.listaItem}>
-        <View>
-          <View style={styles.produtoBox}>
-            <Image
-              style={styles.image}
-              source={require("./assets/maldivas.jpg")}
-            />
-            <Text>Maldivas</Text>
-            <TouchableOpacity style={styles.botao} onPress={trocar1}>
-              <Text style={styles.texto}>Abrir modal 1</Text>
-            </TouchableOpacity>
+          <Modal style={styles.modal} isVisible={visivel5}>
+      <TextInput placeholder="Nome:"></TextInput>  
+      <TextInput placeholder="Email:"></TextInput>  
+      <TextInput placeholder="Senha:"></TextInput>    
+
+        <TouchableOpacity style={styles.botao} onPress={trocar5}>
+          <Text style={styles.texto}>Fechar</Text>
+        </TouchableOpacity>
+      </Modal>
+        
+        <View style={styles.listaItem}>
+          <View style={styles.row}>
+            <View style={styles.produtoBox}>
+              <Image
+                style={styles.image}
+                source={require("./assets/maldivas.jpg")}
+              />
+              <Text>Maldivas</Text>
+              <TouchableOpacity style={styles.botao} onPress={trocar1}>
+                <Text style={styles.texto}>Abrir modal 1</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.botao} onPress={trocar1}>
+                <Text style={styles.texto}>Abrir modal 1</Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity style={styles.botao} onPress={trocar1}>
+                <Text style={styles.texto}>Abrir modal 1</Text>
+              </TouchableOpacity>
+            </View>
+
+            <View style={styles.produtoBox}>
+              <Image
+                style={styles.image}
+                source={require("./assets/filipinas.jpg")}
+              />
+              <Text>Indonesia</Text>
+
+              <TouchableOpacity style={styles.botao} onPress={trocar2}>
+                <Text style={styles.texto}>Abrir modal 2</Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity style={styles.botao} onPress={trocar2}>
+                <Text style={styles.texto}>Abrir modal 2</Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity style={styles.botao} onPress={trocar2}>
+                <Text style={styles.texto}>Abrir modal 2</Text>
+              </TouchableOpacity>
+            </View>
           </View>
-          <View style={styles.produtoBox}>
-            <Image
-              style={styles.image}
-              source={require("./assets/filipinas.jpg")}
-            />
-            <Text>Indonesia</Text>
 
-            <TouchableOpacity style={styles.botao} onPress={trocar2}>
-              <Text style={styles.texto}>Abrir modal 2</Text>
-            </TouchableOpacity>
+          <View style={styles.row}>
+            <View>
+              <View style={styles.produtoBox}>
+                <Image
+                  style={styles.image}
+                  source={require("./assets/indonesia.avif")}
+                />
+                <Text>Filipinas</Text>
+
+                <TouchableOpacity style={styles.botao} onPress={trocar3}>
+                  <Text style={styles.texto}>Abrir modal 3</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={styles.botao} onPress={trocar3}>
+                  <Text style={styles.texto}>Abrir modal 3</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={styles.botao} onPress={trocar3}>
+                  <Text style={styles.texto}>Abrir modal 3</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+
+            <View style={styles.produtoBox}>
+              <Image
+                style={styles.image}
+                source={require("./assets/bahamas.jpg")}
+              />
+              <Text>bahamas</Text>
+
+              <TouchableOpacity style={styles.botao} onPress={trocar4}>
+                <Text style={styles.texto}>Abrir modal 4</Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity style={styles.botao} onPress={trocar4}>
+                <Text style={styles.texto}>Abrir modal 4</Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity style={styles.botao} onPress={trocar4}>
+                <Text style={styles.texto}>Abrir modal 4</Text>
+              </TouchableOpacity>
+            </View>
           </View>
-        </View>
-        <View>
-          <View style={styles.produtoBox}>
-            <Image
-              style={styles.image}
-              source={require("./assets/filipinas.jpg")}
-            />
-            <Text>Filipinas</Text>
 
-            <TouchableOpacity style={styles.botao} onPress={trocar3}>
-              <Text style={styles.texto}>Abrir modal 3</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.produtoBox}>
-            <Image
-              style={styles.image}
-              source={require("./assets/bahamas.jpg")}
-            />
-            <Text>bahamas</Text>
+          <View style={styles.row}>
+            <View>
+              <View style={styles.produtoBox}>
+                <Image
+                  style={styles.image}
+                  source={require("./assets/indonesia.avif")}
+                />
+                <Text>Filipinas</Text>
 
-            <TouchableOpacity style={styles.botao} onPress={trocar4}>
-              <Text style={styles.texto}>Abrir modal 4</Text>
-            </TouchableOpacity>
+                <TouchableOpacity style={styles.botao} onPress={trocar3}>
+                  <Text style={styles.texto}>Abrir modal 3</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={styles.botao} onPress={trocar3}>
+                  <Text style={styles.texto}>Abrir modal 3</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={styles.botao} onPress={trocar3}>
+                  <Text style={styles.texto}>Abrir modal 3</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+
+            <View style={styles.produtoBox}>
+              <Image
+                style={styles.image}
+                source={require("./assets/bahamas.jpg")}
+              />
+              <Text>bahamas</Text>
+
+              <TouchableOpacity style={styles.botao} onPress={trocar4}>
+                <Text style={styles.texto}>Abrir modal 4</Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity style={styles.botao} onPress={trocar4}>
+                <Text style={styles.texto}>Abrir modal 4</Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity style={styles.botao} onPress={trocar4}>
+                <Text style={styles.texto}>Abrir modal 4</Text>
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
       </View>
+
       <Modal
         isVisible={visivel1}
         style={styles.modal}
@@ -143,11 +249,11 @@ export default function App() {
         backdropColor="#black" //muda a cor de tras do model
         backdropOpacity={0.5} //muda a opacidade da cor de tras do model
       >
-        {/* <FlatList
+        <FlatList
           data={viagens}
           renderItem={criaItem}
           keyExtractor={(item) => item.id.toString()}
-        />*/}
+        />
         <TouchableOpacity style={styles.botao} onPress={trocar1}>
           <Text style={styles.texto}>Fechar modal</Text>
         </TouchableOpacity>
@@ -164,7 +270,15 @@ export default function App() {
           <Text style={styles.texto}>Fechar modal</Text>
         </TouchableOpacity>
       </Modal>
-    </View>
+
+      <Modal style={styles.modal} isVisible={visivel4}>
+        <TouchableOpacity style={styles.botao} onPress={trocar4}>
+          <Text style={styles.texto}>Fechar modal</Text>
+        </TouchableOpacity>
+      </Modal>
+
+     
+    </ScrollView>
   );
 }
 
@@ -172,9 +286,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
   },
+
   modal: {
     backgroundColor: "#ca6363ff",
     width: "50%",
@@ -188,14 +301,36 @@ const styles = StyleSheet.create({
     borderWidth: 5,
     borderRadius: 20,
   },
+
   botao: {
     backgroundColor: "gray",
     borderRadius: 20,
     padding: 10,
     marginBottom: 10,
   },
+  cadastro:{
+    backgroundColor: "gray",
+    borderRadius: 20,
+    padding: 10,
+    marginBottom: 10,
+    alignItems:"flex-end"
+  },
+  
+
   texto: {
     color: "white",
+  },
+
+  titulo: {
+    fontSize: 20,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+
+  boxMain: {
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 30,
   },
 
   listaItem: {
@@ -203,15 +338,21 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 12,
     flex: 1,
-    flexDirection: "row",
+    flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
   },
+
+  row: {
+    flexDirection: "row",
+  },
+
   listaImagem: {
     width: 50,
     height: 50,
     marginRight: 10,
   },
+
   produtoBox: {
     backgroundColor: "green",
     padding: 20,
@@ -223,6 +364,7 @@ const styles = StyleSheet.create({
     height: 400,
     marginRight: 5,
   },
+
   image: {
     width: 150,
     height: 150,
